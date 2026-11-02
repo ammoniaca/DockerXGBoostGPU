@@ -1,0 +1,6 @@
+# Normalize line endings: LF in the repository and on Linux (Docker, server).
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF
+*.bat text eol=crlf
+*.ps1 text eol=crlf

@@ -1,0 +1,56 @@
+# Version control and CI
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# IDE
+.idea/
+.vscode/
+
+# Python environments, caches, tooling
+venv/
+.venv/
+env/
+**/__pycache__
+**/*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+**/.ipynb_checkpoints
+
+# Secrets
+.env
+.env.*
+
+# Docker files themselves and non-runtime docs
+Dockerfile
+.dockerignore
+README.md
+project_tree.txt
+
+# Data, outputs, logs (mounted as volumes at runtime)
+data/
+**/*.csv
+**/results
+**/logs
+**/*.log
+
+# Models, artifacts, local databases
+*.joblib
+*.pkl
+*.pickle
+*.model
+*.ubj
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.db
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db

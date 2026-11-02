@@ -1,0 +1,61 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Test, coverage and tooling
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# IDE files
+.idea/
+.vscode/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Experiment outputs and logs
+results/*
+!results/.gitkeep
+logs/
+*.log
+
+# Local datasets (keep only the empty folder)
+data/*
+!data/.gitkeep
+datasets/*
+!datasets/.gitkeep
+
+# Model checkpoints, local databases and large artifacts
+*.joblib
+*.pkl
+*.pickle
+*.model
+*.ubj
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.db
+*.sqlite3
+
+# Generated helper files
+project_tree.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+/xgb-xai-stability_1.2.tar

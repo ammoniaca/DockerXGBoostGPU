@@ -1,0 +1,55 @@
+{
+    "setting": {
+        "strategy": {
+            "metric": "rmse",
+            "n_trials": 300,
+            "n_k_folds": 5,
+            "vanilla": {
+                "subsample": 0.8,
+                "colsample_bytree": 0.8
+            },
+            "optuna": {
+                "direction": "minimize",
+                "sampler": {
+                    "name":  "tpe",
+                    "params":  {
+                        "n_startup_trials": 100,
+                        "n_ei_candidates": 64
+                    }
+                },
+                "pruner": {
+                    "name": "median",
+                    "params": {
+                        "n_startup_trials": 10,
+                        "n_warmup_steps": 2,
+                        "interval_steps": 1
+                    }
+                }
+            },
+            "rscv": {}
+        },
+        "model": {
+            "fixed": {
+                "objective": "reg:squarederror",
+                "tree_method": "hist",
+                "device": "cuda",
+                "eval_metric": "rmse",
+                "early_stopping_rounds": 100
+            },
+            "suggested": {
+                "n_estimators":      {"prob":"randint",    "min": 500,  "max": 4000, "step":  10},
+                "eta":               {"prob":"loguniform", "min": 0.01, "max": 0.3,  "step":  null},
+                "max_depth":         {"prob":"randint",    "min": 3,    "max": 8,    "step":  1},
+                "max_leaves":        {"prob":"randint",    "min": 16,   "max": 128,  "step":  1},
+                "subsample":         {"prob":"uniform",    "min": 0.5,  "max": 1.0,  "step":  null},
+                "colsample_bytree":  {"prob":"uniform",    "min": 0.5,  "max": 1.0,  "step":  null},
+                "colsample_bylevel": {"prob":"uniform",    "min": 0.5,  "max": 1.0,  "step":  null},
+                "min_child_weight":  {"prob":"loguniform", "min": 0.1,  "max": 30.0, "step":  null},
+                "reg_alpha":         {"prob":"loguniform", "min": 1e-8, "max": 7.0,  "step":  null},
+                "reg_lambda":        {"prob":"loguniform", "min": 1e-8, "max": 7.0,  "step":  null},
+                "gamma":             {"prob":"loguniform", "min": 1e-8, "max": 2.0,  "step":  null},
+                "grow_policy":       ["depthwise", "lossguide"]
+            }
+        }
+    }
+}
